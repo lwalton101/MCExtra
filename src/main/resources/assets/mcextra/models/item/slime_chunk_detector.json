@@ -1,0 +1,20 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mcextra:item/slime_chunk_detector"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "found_slime_chunk": 0
+      },
+      "model": "mcextra:item/slime_chunk_detector_false"
+    },
+    {
+      "predicate": {
+        "found_slime_chunk": 1
+      },
+      "model": "mcextra:item/slime_chunk_detector_true"
+    }
+  ]
+}

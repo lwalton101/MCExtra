@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "no.nicknotname.mcextra.MCExtra"
+    ],
+    "client": [
+      "no.nicknotname.mcextra.MCExtraClient"
     ]
   },
   "mixins": [

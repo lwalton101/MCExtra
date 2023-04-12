@@ -1,0 +1,6 @@
+{
+  "parent": "mcextra:item/slime_chunk_detector",
+  "textures": {
+    "layer0": "mcextra:item/slime_chunk_detector_true"
+  }
+}
