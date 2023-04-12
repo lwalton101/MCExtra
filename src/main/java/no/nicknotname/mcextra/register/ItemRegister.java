@@ -1,7 +1,9 @@
 package no.nicknotname.mcextra.register;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -15,12 +17,13 @@ public class ItemRegister {
     public static final SlimeChunkDetectorItem slimeChunkDetector = new SlimeChunkDetectorItem(new FabricItemSettings().maxCount(1));
 
     public static void RegisterAll(){
-        registerItem("ancient_eye", ancientEyeItem);
-        registerItem("slime_chunk_detector", slimeChunkDetector);
+        registerItem("ancient_eye", ancientEyeItem, ItemGroupRegister.MCEXTRA_GROUP);
+        registerItem("slime_chunk_detector", slimeChunkDetector, ItemGroupRegister.MCEXTRA_GROUP);
     }
 
-    private static void registerItem(String itemName, Item item){
+    private static void registerItem(String itemName, Item item, ItemGroup itemGroup){
         Registry.register(Registries.ITEM, new Identifier("mcextra", itemName), item);
+        ItemGroupEvents.modifyEntriesEvent(itemGroup).register(entries -> entries.add(item));
     }
 
 }
