@@ -16,7 +16,6 @@ public class MCExtraClient implements ClientModInitializer {
             }
             ChunkPos chunkPos = new ChunkPos(entity.getBlockPos());
             float slimeChunk = ChunkRandom.getSlimeRandom(chunkPos.x, chunkPos.z, seed, 987234911L).nextInt(10);
-            MCExtra.LOGGER.info(String.valueOf(slimeChunk));
 
             return slimeChunk == 0 ? 1.0f: 0.0f;
 
