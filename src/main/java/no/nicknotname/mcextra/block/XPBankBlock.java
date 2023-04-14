@@ -7,18 +7,23 @@ import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import no.nicknotname.mcextra.block.entity.XPBankBlockEntity;
 import no.nicknotname.mcextra.register.BlockRegister;
 import org.jetbrains.annotations.Nullable;
 
 public class XPBankBlock extends BlockWithEntity {
+
+    private int xpBackup = 0;
     public XPBankBlock(Settings settings) {
         super(settings);
     }
@@ -38,7 +43,18 @@ public class XPBankBlock extends BlockWithEntity {
 
         blockEntity.handleClick(player);
         world.updateListeners(pos, state, state, Block.NOTIFY_LISTENERS);
+        xpBackup = blockEntity.getXp();
         return super.onUse(state, world, pos, player, hand, hit);
+    }
+
+    @Override
+    public void onBroken(WorldAccess world, BlockPos pos, BlockState state) {
+        if(world instanceof ServerWorld){
+            ExperienceOrbEntity experienceOrbEntity = new ExperienceOrbEntity((ServerWorld)world, pos.getX(), pos.getY(), pos.getZ(), xpBackup);
+            world.spawnEntity(experienceOrbEntity);
+        }
+
+        super.onBroken(world, pos, state);
     }
 
     @Nullable
