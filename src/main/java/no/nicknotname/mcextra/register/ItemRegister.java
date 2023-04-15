@@ -21,7 +21,7 @@ public class ItemRegister {
         registerItem("slime_chunk_detector", slimeChunkDetector, ItemGroupRegister.MCEXTRA_GROUP);
     }
 
-    private static void registerItem(String itemName, Item item, ItemGroup itemGroup){
+    public static void registerItem(String itemName, Item item, ItemGroup itemGroup){
         Registry.register(Registries.ITEM, new Identifier("mcextra", itemName), item);
         ItemGroupEvents.modifyEntriesEvent(itemGroup).register(entries -> entries.add(item));
     }
