@@ -12,6 +12,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import no.nicknotname.mcextra.block.RecordPlayerBlock;
 import no.nicknotname.mcextra.block.XPBankBlock;
 import no.nicknotname.mcextra.block.entity.XPBankBlockEntity;
 
@@ -22,12 +23,19 @@ public class BlockRegister {
             .requiresTool()
     );
 
+    public static final RecordPlayerBlock RECORD_PLAYER_BLOCK = new RecordPlayerBlock(FabricBlockSettings.of(Material.WOOD, MapColor.DIRT_BROWN)
+            .strength(2.0f)
+            .requiresTool()
+            .nonOpaque()
+    );
+
     public static final BlockEntityType<XPBankBlockEntity> XP_BANK_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
             new Identifier("mcextra", "xp_bank_block_entity"),
             FabricBlockEntityTypeBuilder.create(XPBankBlockEntity::new, XP_BANK_BLOCK).build());
     public static void RegisterAll(){
         registerBlock("xp_bank", XP_BANK_BLOCK, ItemGroupRegister.MCEXTRA_GROUP);
+        registerBlock("record_player", RECORD_PLAYER_BLOCK, ItemGroupRegister.MCEXTRA_GROUP);
     }
 
     private static void registerBlock(String blockName, Block block, ItemGroup itemGroup){

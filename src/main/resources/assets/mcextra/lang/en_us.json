@@ -7,5 +7,7 @@
   "block.mcextra.xp_bank": "XP Bank",
   "block.mcextra.xp_bank.xpMessage": "There is %d xp in the bank",
   "block.mcextra.xp_bank.bank_not_enough_xp": "There is not enough XP in the bank!",
-  "block.mcextra.xp_bank.player_not_enough_xp": "You do not have enough XP! You have %d xp!"
+  "block.mcextra.xp_bank.player_not_enough_xp": "You do not have enough XP! You have %d xp!",
+
+  "block.mcextra.record_player": "Record Player"
 }

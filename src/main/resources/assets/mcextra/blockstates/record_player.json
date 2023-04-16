@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mcextra:block/record_player"
+    },
+    "facing=south": {
+      "model": "mcextra:block/record_player",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mcextra:block/record_player",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "mcextra:block/record_player",
+      "y": 90
+    }
+  }
+}
