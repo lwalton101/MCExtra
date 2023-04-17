@@ -12,6 +12,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import no.nicknotname.mcextra.block.RecordEtcherBlock;
 import no.nicknotname.mcextra.block.RecordPlayerBlock;
 import no.nicknotname.mcextra.block.XPBankBlock;
 import no.nicknotname.mcextra.block.entity.XPBankBlockEntity;
@@ -29,6 +30,12 @@ public class BlockRegister {
             .nonOpaque()
     );
 
+    public static final RecordEtcherBlock RECORD_ETCHER_BLOCK = new RecordEtcherBlock(FabricBlockSettings.of(Material.WOOD, MapColor.DIRT_BROWN)
+            .strength(2.0f)
+            .requiresTool()
+            .nonOpaque()
+    );
+
     public static final BlockEntityType<XPBankBlockEntity> XP_BANK_BLOCK_ENTITY = Registry.register(
             Registries.BLOCK_ENTITY_TYPE,
             new Identifier("mcextra", "xp_bank_block_entity"),
@@ -36,6 +43,7 @@ public class BlockRegister {
     public static void RegisterAll(){
         registerBlock("xp_bank", XP_BANK_BLOCK, ItemGroupRegister.MCEXTRA_GROUP);
         registerBlock("record_player", RECORD_PLAYER_BLOCK, ItemGroupRegister.MCEXTRA_GROUP);
+        registerBlock("record_etcher", RECORD_ETCHER_BLOCK, ItemGroupRegister.MCEXTRA_GROUP);
     }
 
     private static void registerBlock(String blockName, Block block, ItemGroup itemGroup){
